@@ -5,6 +5,8 @@ Language Toggle button from Japanese and English
 
 Color Scheme:
 {"White":"ffffff","Dark Emerald":"0b5d1e","Onyx":"0a0a0b","Sage Green":"6d9e6b"}
+Background color:
+#EBF5DF
 
 First Page:
 Voice activated Chatbot to attain any information you want on the website. Answers only questions in Japanese. Does not answer English questions Use small open source model with Japanese capabilities. Feed current date
