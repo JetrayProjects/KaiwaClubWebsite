@@ -1,0 +1,37 @@
+@import "tailwindcss";
+
+@theme {
+  --color-kaiwa-white: #ffffff;
+  --color-kaiwa-emerald: #0b5d1e;
+  --color-kaiwa-onyx: #0a0a0b;
+  --color-kaiwa-sage: #6d9e6b;
+  --color-kaiwa-bg: #EBF5DF;
+
+  --font-sans: Inter, sans-serif;
+
+  --background-image-gradient-to-content: linear-gradient(to bottom, transparent, #EBF5DF);
+}
+
+@layer base {
+  body {
+    @apply bg-kaiwa-bg text-kaiwa-onyx font-sans antialiased;
+  }
+}
+
+@layer utilities {
+  @keyframes gradient {
+
+    0%,
+    100% {
+      background-position: 0% 50%;
+    }
+
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  .animate-gradient {
+    animation: gradient 3s ease infinite;
+  }
+}

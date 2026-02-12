@@ -1,0 +1,92 @@
+{
+    "responses": [
+        {
+            "id": "greetings",
+            "keywords": [
+                "hello",
+                "hi",
+                "hey",
+                "こんにちは",
+                "konnichiwa",
+                "やあ"
+            ],
+            "answer_en": "Hello! How can I help you with the Japanese Conversation Club?",
+            "answer_ja": "こんにちは！日本語会話クラブについて何かお手伝いできますか？"
+        },
+        {
+            "id": "schedule",
+            "keywords": [
+                "schedule",
+                "next session",
+                "class",
+                "meeting",
+                "when",
+                "スケジュール",
+                "次の会",
+                "いつ",
+                "授業"
+            ],
+            "answer_en": "The next session is this Friday (February 13th) at 5 PM in Weiss Hall 615",
+            "answer_ja": "次の会は今週の金曜日（2月13日）、午後5時にWeiss Hall 615で行われます。"
+        },
+        {
+            "id": "resources",
+            "keywords": [
+                "resource",
+                "learn",
+                "study",
+                "app",
+                "tool",
+                "リソース",
+                "勉強",
+                "学習",
+                "アプリ"
+            ],
+            "answer_en": "You can use Shirabe Jisho on IOS, Japanese app on either, or Jisho.org for studying Japanese.",
+            "answer_ja": "日本語の勉強には、しらべ辞書アプリやJisho.orgを使うことができます。"
+        },
+        {
+            "id": "join",
+            "keywords": [
+                "join",
+                "member",
+                "sign up",
+                "participate",
+                "入会",
+                "参加",
+                "メンバー"
+            ],
+            "answer_en": "You can send us a direct message on Instagram or join our GroupMe to become a member! Additionally, you can just come to our next session to join!",
+            "answer_ja": "Instagramでダイレクトメッセージを送るか、GroupMeに参加してメンバーになることができます！また、次回のセッションに来るだけでも参加できます！"
+        },
+        {
+            "id": "location",
+            "keywords": [
+                "where",
+                "location",
+                "place",
+                "room",
+                "どこ",
+                "場所",
+                "部屋"
+            ],
+            "answer_en": "We meet at Weiss Hall 615",
+            "answer_ja": "ウェイス・ホール615で会います"
+        },
+        {
+            "id": "about",
+            "keywords": [
+                "about",
+                "what is",
+                "tell me",
+                "について",
+                "教えて",
+                "会話クラブ"
+            ],
+            "answer_en": "We are Temple University's Japanese Conversation and Culture Club. We provide an environment for students to practice Japanese conversation with other learners and experience Japanese culture. All levels welcome!",
+            "answer_ja": "私たちはテンプル大学日本語会話・文化クラブです。他の学習者と日本語で会話を練習し、日本文化を体験できる環境を提供しています。すべてのレベルの方を歓迎します！"
+        }
+    ],
+    "default_response_en": "I'm sorry, I didn't catch that. You can ask me about the schedule, resources, how to join, or our location.",
+    "default_response_ja": "すみません、よく聞き取れませんでした。スケジュール、リソース、参加方法、場所について聞いてください。"
+}
