@@ -102,6 +102,7 @@ export const Chatbot: React.FC = () => {
             recognitionRef.current = new SpeechRecognition();
             recognitionRef.current.continuous = false;
             recognitionRef.current.interimResults = false;
+            recognitionRef.current.maxAlternatives = 1; // Safari fix
             recognitionRef.current.lang = language === 'en' ? 'en-US' : 'ja-JP';
 
             recognitionRef.current.onstart = () => {
@@ -111,16 +112,33 @@ export const Chatbot: React.FC = () => {
 
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             recognitionRef.current.onresult = (event: any) => {
-                const text = event.results[0][0].transcript;
-                setTranscript(text);
-                processCommand(text);
+                // Safari fix: check if results exist and have data
+                if (event.results && event.results.length > 0 && event.results[0].length > 0) {
+                    const text = event.results[0][0].transcript;
+                    console.log('Speech recognized:', text); // Debug log
+                    setTranscript(text);
+                    processCommand(text);
+                } else {
+                    console.error('No speech results received');
+                    setError('Could not understand. Please try again.');
+                }
             };
 
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             recognitionRef.current.onerror = (event: any) => {
-                console.error("Speech recognition error", event.error);
+                console.error("Speech recognition error:", event.error);
                 setIsListening(false);
-                setError('Could not hear you. Please try again.');
+
+                // Safari-specific error messages
+                if (event.error === 'no-speech') {
+                    setError('No speech detected. Please try again.');
+                } else if (event.error === 'audio-capture') {
+                    setError('Microphone not accessible. Check permissions.');
+                } else if (event.error === 'not-allowed') {
+                    setError('Microphone permission denied.');
+                } else {
+                    setError('Could not hear you. Please try again.');
+                }
             };
 
             recognitionRef.current.onend = () => {
