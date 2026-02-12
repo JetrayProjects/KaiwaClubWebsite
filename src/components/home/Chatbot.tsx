@@ -159,26 +159,7 @@ export const Chatbot: React.FC = () => {
     const startListening = () => {
         if (recognitionRef.current && !isListening && !isSpeaking) {
             try {
-                // iOS Safari fix: stop and restart to ensure clean state
-                const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-
-                if (isIOS) {
-                    // iOS requires stopping first if already initialized
-                    try {
-                        recognitionRef.current.stop();
-                    } catch (e) {
-                        // Ignore if not started
-                    }
-
-                    // Small delay before starting on iOS
-                    setTimeout(() => {
-                        if (recognitionRef.current) {
-                            recognitionRef.current.start();
-                        }
-                    }, 100);
-                } else {
-                    recognitionRef.current.start();
-                }
+                recognitionRef.current.start();
             } catch (e) {
                 console.error('Error starting speech recognition:', e);
                 setError('Could not start microphone. Please try again.');
