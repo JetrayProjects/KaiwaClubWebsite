@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Mic, MicOff, Volume2, Loader2, Globe } from 'lucide-react';
+import knowledgeBaseData from '../../data/chatbot-knowledge.json';
 
 // Knowledge base type
 interface KnowledgeResponse {
@@ -24,7 +25,7 @@ export const Chatbot: React.FC = () => {
     const [response, setResponse] = useState('');
     const [error, setError] = useState('');
     const [language, setLanguage] = useState<'en' | 'ja'>('en');
-    const [knowledgeBase, setKnowledgeBase] = useState<KnowledgeBase | null>(null);
+    const [knowledgeBase] = useState<KnowledgeBase>(knowledgeBaseData);
 
     // Refs for speech synthesis and recognition
     const synthesisRef = useRef<SpeechSynthesis | null>(null);
@@ -52,12 +53,6 @@ export const Chatbot: React.FC = () => {
 
         // Mock Logic simulated delay
         setTimeout(() => {
-            if (!knowledgeBase) {
-                setResponse("Knowledge base not loaded. Please refresh the page.");
-                setIsProcessing(false);
-                return;
-            }
-
             const lowerText = text.toLowerCase();
             let answer = language === 'en'
                 ? knowledgeBase.default_response_en
@@ -82,14 +77,6 @@ export const Chatbot: React.FC = () => {
     }, [speakResponse, knowledgeBase, language]);
 
     useEffect(() => {
-        // Load knowledge base from JSON
-        fetch('/chatbot-knowledge.json')
-            .then(res => res.json())
-            .then(data => setKnowledgeBase(data))
-            .catch(err => {
-                console.error('Failed to load knowledge base:', err);
-                setError('Failed to load chatbot data.');
-            });
 
         // Initialize Speech Setup
         if ('speechSynthesis' in window) {
